@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联持久层接口-->
+<mapper namespace="com.besokuse.proj.dao.DepartmentMapper">
+    <select id="findRootSources" resultType="com.besokuse.proj.pojo.Department">
+        select id,name,pid  from department where pid is null;
+    </select>
+
+    <select id="getChildrenSources" resultType="com.besokuse.proj.pojo.Department">
+        select id,name,pid from department where pid=#{pid};
+    </select>
+    <insert id="addSources">
+        insert into sources(name,pid)   values (#{name},#{pid});
+    </insert>
+    <update id="updateSources">
+        update department set  name=#{name},pid=#{pid}  where id=#{id};
+    </update>
+    <delete id="delByIdSources">
+        delete from department where id=#{id};
+    </delete>
+</mapper>
