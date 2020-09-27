@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联持久层接口-->
+<mapper namespace="com.besokuse.proj.dao.EmployeeMapper">
+    <insert id="addEmployee">
+        insert into employee (name,age,sex,address) values (#{name},#{age},#{sex},#{address});
+    </insert>
+
+    <update id="updateEmployee">
+        update employee
+        set name=#{name},age=#{age},sex=#{sex}, address=#{address}
+
+         where id=#{id};
+    </update>
+    <delete id="delOneEmployee">
+        delete from employee where id=#{id}
+    </delete>
+    <select id="findAllEmployee" resultType="com.besokuse.proj.pojo.Employee">
+            select id,name,age,sex,address from employee
+    </select>
+
+</mapper>
